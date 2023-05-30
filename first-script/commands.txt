@@ -1,0 +1,22 @@
+to run scripts
+--------------
+sample run k6 
+ k6 run .\first-script\script.js
+
+run a load test with more than one virtual user and a longer duration:
+ k6 run --vus 10 --duration 30s .\first-script\script.js
+
+run the script without those options on the command line:
+ k6 run .\first-script\script_options.js
+
+Stages: ramping up/down VUs
+---------------------------
+You can ramp the number of VUs up and down during the test. 
+To configure ramping, use the options.stages property.
+ k6 run .\first-script\stages.js
+
+configure the statistics to report with the --summary-trend-stats
+displays only median, p95, and p99.9 values.
+ k6 run --iterations=50 --vus=10 --summary-trend-stats="med,p(95),p(99.9)" .\first-script\script_options.js
+
+ k6 run --iterations=50 --vus=10 --summary-trend-stats="med,p(95),p(99.9)" .\first-script\script_options.js --out json=test.json
